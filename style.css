@@ -1,0 +1,332 @@
+:root {
+  --ik-accent: #f5a524;
+  --ik-projfilter: grayscale(1);
+}
+
+* {
+  box-sizing: border-box
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #f4f1ea;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden
+}
+
+::selection {
+  background: var(--ik-accent, #f5a524);
+  color: #0a0a0a
+}
+
+a {
+  color: var(--ik-accent, #f5a524);
+  text-decoration: none
+}
+
+a:hover {
+  color: #ffc35a
+}
+
+::-webkit-scrollbar {
+  width: 10px
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 6px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ik-accent, #f5a524)
+}
+
+@keyframes ikmarquee {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(-50%)
+  }
+}
+
+@keyframes ikscrolldot {
+  0% {
+    transform: translateY(0);
+    opacity: 0
+  }
+
+  30% {
+    opacity: 1
+  }
+
+  70% {
+    opacity: 1
+  }
+
+  100% {
+    transform: translateY(20px);
+    opacity: 0
+  }
+}
+
+@keyframes ikfloat {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-10px)
+  }
+}
+
+/* Project images — swap the assets/project-*.jpg files with your own.
+   Same 16:10 box; object-fit:cover keeps them cropped and consistent. */
+.ik-projimg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #141414;
+}
+
+/* Hover states (converted from the original style-hover attributes) */
+.ik-h1:hover {
+  background: var(--ik-accent, #f5a524);
+  color: #0a0a0a;
+  border-color: var(--ik-accent, #f5a524);
+}
+
+.ik-h2:hover {
+  background: #ffc35a;
+  gap: 18px;
+}
+
+.ik-h3:hover {
+  color: var(--ik-accent, #f5a524);
+  border-color: var(--ik-accent, #f5a524);
+}
+
+.ik-h4:hover {
+  filter: grayscale(0) !important;
+  transform: scale(1.04);
+}
+
+.ik-h5:hover {
+  filter: grayscale(0) !important;
+  transform: scale(1.04);
+}
+
+.ik-h6:hover {
+  filter: grayscale(0) !important;
+  transform: scale(1.04);
+}
+
+.ik-h7:hover {
+  filter: grayscale(0) !important;
+  transform: scale(1.04);
+}
+
+.ik-h8:hover {
+  padding-left: 16px;
+}
+
+.ik-h9:hover {
+  padding-left: 16px;
+}
+
+.ik-h10:hover {
+  padding-left: 16px;
+}
+
+.ik-h11:hover {
+  border-color: rgba(245, 165, 36, .45);
+  transform: translateY(-6px);
+}
+
+.ik-h12:hover {
+  border-color: rgba(245, 165, 36, .45);
+  transform: translateY(-6px);
+}
+
+.ik-h13:hover {
+  color: var(--ik-accent, #f5a524);
+  border-color: var(--ik-accent, #f5a524);
+}
+
+.ik-h14:hover {
+  color: var(--ik-accent, #f5a524);
+  border-color: var(--ik-accent, #f5a524);
+}
+
+.ik-h15:hover {
+  background: var(--ik-accent, #f5a524);
+  color: #0a0a0a;
+  border-color: var(--ik-accent, #f5a524);
+}
+
+.ik-h16:hover {
+  background: var(--ik-accent, #f5a524);
+  color: #0a0a0a;
+  border-color: var(--ik-accent, #f5a524);
+}
+
+/* ============================================================
+   RESPONSIVE
+   Inline styles set the desktop layout; these overrides
+   (higher specificity via class + !important where needed)
+   adapt it for tablet and mobile.
+   ============================================================ */
+
+/* --- Tablet / small laptop --- */
+@media (max-width: 960px) {
+
+  /* Two-column splits stack */
+  .ik-grid-split,
+  .ik-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Skills: 4 cols -> 2 cols */
+  .ik-skills {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Experience rows: label stacks above description */
+  .ik-exprow {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  /* Hero image less dominant */
+  #ikhero-img {
+    width: 60% !important;
+    opacity: .55;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 700px) {
+
+  /* Tighter section padding everywhere */
+  #impact,
+  #projects,
+  #experience,
+  #education,
+  #skills,
+  #contact {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+  }
+
+  /* Nav: hide inline links + Hire Me, show hamburger */
+  #iknavlinks {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center;
+    gap: 28px !important;
+    padding: 0 8vw;
+    background: rgba(10, 10, 10, .96);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-left: 1px solid rgba(255, 255, 255, .08);
+    transform: translateX(100%);
+    transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+    font-size: 20px !important;
+    z-index: 105;
+  }
+
+  #iknavlinks.ik-open {
+    transform: translateX(0);
+  }
+
+  #iknav .ik-h1 {
+    display: none;
+  }
+
+  #iknavtoggle {
+    display: block !important;
+  }
+
+  /* Hamburger -> X when open */
+  #iknavtoggle.ik-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #iknavtoggle.ik-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #iknavtoggle.ik-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Hero: full-bleed stacked layout */
+  #home {
+    padding-top: 108px !important;
+    padding-bottom: 60px !important;
+    align-items: center !important;
+  }
+
+  #ikhero-img {
+    width: 100% !important;
+    height: 100% !important;
+    opacity: .28 !important;
+    -webkit-mask-image: linear-gradient(to top, transparent 2%, #000 60%) !important;
+    mask-image: linear-gradient(to top, transparent 2%, #000 60%) !important;
+  }
+
+  #ikscroll {
+    display: none !important;
+  }
+
+  /* Stats: single column */
+  .ik-stats,
+  .ik-skills {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Projects: single column */
+  .ik-projects {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+
+  /* Marquee a touch smaller */
+  #ikmarquee span {
+    font-size: 18px;
+  }
+}
+
+/* Prevent horizontal scroll on very small phones */
+@media (max-width: 400px) {
+  #iknav {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+  }
+}
